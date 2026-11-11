@@ -179,6 +179,90 @@
   .story.row .browser{width:min(340px,42vh)}
   .story.row .video{width:min(190px,24vh)}
 
+  /* Chapter 3 before / after: tall browser windows, the page scrolls slowly inside */
+  .media.compare{display:flex;align-items:center;justify-content:center;max-width:none}
+  .m-shot{display:block;position:relative}
+  .m-shot .m-float{position:relative}
+  .m-shot.before{z-index:1;margin-right:-34px}
+  .m-shot.after{z-index:2}
+  .browser.tall{--vp:min(470px,52vh);width:min(330px,37vh);transition:transform .35s var(--ease),filter .35s}
+  .m-shot.before .browser.tall{--vp:min(410px,46vh);width:min(285px,32vh);transform:rotate(-4deg) translateY(18px);filter:saturate(.5) brightness(.8)}
+  .m-shot.after .browser.tall{transform:rotate(3deg);border-color:var(--accent-line);box-shadow:0 30px 60px rgba(0,0,0,.6),0 0 0 1px var(--accent-line)}
+  .m-shot:hover .browser.tall{filter:none}
+  .browser.tall .viewport{display:block;height:var(--vp);overflow:hidden;background:#fff}
+  .browser.tall .viewport img{width:100%;height:auto;aspect-ratio:auto;object-fit:fill;animation:pageScroll 18s ease-in-out infinite alternate}
+  .m-shot.before .viewport img{animation-delay:-5s}
+  .m-shot:hover .viewport img{animation-play-state:paused}
+  @keyframes pageScroll{0%,8%{transform:translateY(0)}92%,100%{transform:translateY(calc(-100% + var(--vp)))}}
+  .ba-tag{position:absolute;top:-14px;left:18px;z-index:3;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-radius:var(--pill);padding:5px 12px;background:#2a2a2a;color:var(--body);border:1px solid var(--line)}
+  .m-shot.after .ba-tag{background:var(--accent);color:var(--bg);border-color:var(--accent)}
+  .m-shot .cap{display:block;text-align:center;margin-top:20px}
+  .m-shot .cap small{font-size:13px;font-weight:600;color:var(--muted)}
+  .m-shot.after .cap small{color:var(--accent)}
+  @media (max-width:767px){
+    .browser.tall{--vp:270px;width:152px}
+    .m-shot.before .browser.tall{--vp:235px;width:130px}
+    .m-shot.before{margin-right:-16px}
+    .ba-tag{font-size:10px;padding:3px 9px;left:10px}
+  }
+
+  /* Merged chapter 4: two numbers, team photos, growth-vs-cost chart */
+  .s-sub{font-size:17px;font-weight:500;color:var(--text-strong);margin-top:14px;max-width:440px}
+  .nums{display:flex;gap:36px;margin-top:20px;flex-wrap:wrap}
+  .nums .big-num{margin-top:0;align-items:flex-start;text-align:left}
+  .nums .big-num .num-val{font-size:clamp(64px,6.4vw,104px)}
+  .nums .big-num small{max-width:200px;font-size:13px}
+  .scene.layout-team .scene-center{max-width:520px}
+  .scene.layout-team .pill{margin-bottom:16px}
+  .scene.layout-team .s-title{font-size:clamp(34px,4.1vw,58px)}
+  .scene.layout-team .s-sub{font-size:16px;margin-top:10px}
+  .scene.layout-team .nums{margin-top:14px}
+  .scene.layout-team .nums .big-num .num-val{font-size:clamp(56px,5.2vw,86px)}
+  .scene.layout-team .s-text{font-size:15px;line-height:1.6;margin-top:14px}
+  .media.team{display:flex;flex-direction:column;align-items:center;gap:28px;max-width:none}
+  .team-photos{display:flex;align-items:center}
+  .m-photo + .m-photo{margin-left:-26px}
+  .m-photo:nth-child(2){z-index:2}
+  .polaroid{display:block;width:min(200px,23vh);background:#f4f4f1;padding:10px 10px 0;border-radius:6px;box-shadow:0 22px 44px rgba(0,0,0,.5);transition:transform .35s var(--ease)}
+  .m-photo:nth-child(1) .polaroid{transform:rotate(-6deg) translateY(10px)}
+  .m-photo:nth-child(2) .polaroid{transform:rotate(2deg) translateY(-8px)}
+  .m-photo:nth-child(3) .polaroid{transform:rotate(7deg) translateY(12px)}
+  .m-photo:hover{z-index:3}
+  .m-photo:hover .polaroid{transform:rotate(0) translateY(-8px) scale(1.04)}
+  .polaroid img,.polaroid .ph-photo{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:2px}
+  .polaroid .ph-photo{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:repeating-linear-gradient(135deg,#e6e6e1 0 10px,#ececE8 10px 20px);color:#8a8a84;font-size:12px;font-weight:600}
+  .polaroid .ph-photo svg{width:26px;height:26px}
+  .polaroid .pcap{display:block;padding:9px 2px 11px;text-align:center;font-size:13px;font-weight:600;color:#2a2a2a}
+  /* Day one → After card */
+  .ba-card{display:grid;grid-template-columns:1fr auto 1fr;align-items:stretch;gap:0;width:min(520px,60vh);background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:0 22px 44px rgba(0,0,0,.45)}
+  .ba-col{display:flex;flex-direction:column;gap:12px;padding:18px 18px 20px}
+  .ba-col.now{background:linear-gradient(160deg,rgba(36,199,106,.14),rgba(36,199,106,.04));border-left:1px solid var(--accent-line)}
+  .ba-title{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .ba-col.now .ba-title{color:var(--accent)}
+  .ba-list{display:flex;flex-direction:column;gap:10px}
+  .ba-row{display:flex;align-items:center;gap:10px;font-size:14px;line-height:1.35}
+  .ba-row svg{width:16px;height:16px;flex:none;stroke-width:2.5}
+  .ba-col.was .ba-row{color:var(--muted)}
+  .ba-col.was .ba-row svg{color:#ff7a6b}
+  .ba-col.now .ba-row{color:var(--text-strong);font-weight:600}
+  .ba-col.now .ba-row svg{color:var(--accent)}
+  .ba-arrow{display:flex;align-items:center;padding:0 4px;position:relative;z-index:1;margin:0 -16px}
+  .ba-arrow svg{width:32px;height:32px;padding:7px;border-radius:50%;background:var(--accent);color:var(--bg);stroke-width:2.5}
+  @media (max-width:1179px){
+    .nums{justify-content:center}
+    .nums .big-num{align-items:center;text-align:center}
+  }
+  @media (max-width:767px){
+    .polaroid{width:118px;padding:6px 6px 0}
+    .polaroid .pcap{font-size:11px;padding:6px 2px 8px}
+    .m-photo + .m-photo{margin-left:-16px}
+    .ba-card{width:min(343px,92vw)}
+    .ba-col{padding:14px 12px 16px}
+    .ba-row{font-size:12.5px;gap:7px}
+    .ba-arrow svg{width:26px;height:26px;padding:5px}
+    .nums{gap:22px}
+  }
+
   /* Narrower than a laptop: text on top, work samples underneath */
   @media (max-width:1179px){
     .scene.layout-phones{flex-direction:column;gap:40px}
@@ -481,7 +565,7 @@
 <!-- Edit mode toolbar (only shown with ?edit) -->
 <div class="edit-bar" id="editBar" hidden>
   <b>Edit mode</b>
-  <span class="eb-tip">Click any text to change it · <kbd>Enter</kbd> save · <kbd>Esc</kbd> cancel · Story titles: put *stars* around the green part</span>
+  <span class="eb-tip">Click any text to change it · <kbd>Enter</kbd> save · <kbd>Shift+Enter</kbd> new line · <kbd>Ctrl+B</kbd> bold · <kbd>Esc</kbd> cancel · Story titles: put *stars* around the green part</span>
   <span class="eb-status" id="ebStatus">All saved</span>
   <button type="button" id="ebBackup">Download backup</button>
   <a href="./" id="ebExit">Exit</a>
@@ -555,7 +639,7 @@ const PROJECTS = [
     summary:"Scenarios and copy for brand videos — six selected pieces.", overview:TBD+" Scriptwriting and idea development for brand videos, often with a creative team.",
     did:["Placeholder: concept","Placeholder: script"], results:[["6","selected videos"]],
     links:["V95SX","s16c5k9","a037780","h279h06","KAa9Z","p13ofqa"].map((v,i)=>({label:"Video "+(i+1), url:"https://www.aparat.com/v/"+v})) },
-  { id:"harmony-v1", title:"Harmony Website — SEO Rebuild", mono:"Harmony v1", metric:"SEO-first", ph:true,
+  { id:"harmony-v1", title:"Harmony Website — SEO Rebuild", mono:"Harmony v1", metric:"SEO-first", image:"assets/work/harmony-after.jpg",
     year:"Before 2026", role:"Project Manager", tags:["Website","Project Management"],
     summary:"Our own agency site, rebuilt properly — SEO-first, with the team.", overview:TBD, did:[], results:[], links:[] },
 
@@ -608,18 +692,31 @@ const CHAPTERS = [
     } },
   { meta:"The turning point", title:"We built sites for everyone. *Except ourselves.*",
     text:"Our agency site was broken and unowned. I took charge, led the rebuild into an SEO engine, and outranked industry giants—bringing in inbound leads and a 3-year flagship client.",
-    items:["harmony-v1"] },
-  { meta:"A new role", title:"Leadership trusted me to *lead.*",
-    num:{from:4, to:43, label:"8 in-house + 35 specialized freelancers. Started from 4."},
-    text:"My manager took a bet on me: “Step up and run agency projects.” I built a 4-person setup into an agile 43-person delivery machine." },
-  { meta:"The system", title:"Scale needed *smart numbers.*",
-    num:{from:0, to:40, prefix:"~", suffix:"%", label:"lower project costs via data-driven matching"},
-    text:"Managing diverse creatives was chaotic. I built an objective scoring system for speed and quality, cutting comparable project costs by 40%." },
-  { meta:"Agency life", title:"Big brands. *Impossible deadlines.*",
+    compare:{ id:"harmony-v1", url:"harmony.agency",
+      before:{img:"assets/work/harmony-before.jpg", tag:"Before", cap:"The old agency site"},
+      after:{img:"assets/work/harmony-after.jpg", tag:"After", cap:"The SEO-first rebuild"} } },
+  /* Chapters 4 + 5 merged: the new role, building the team, and scaling it at lower cost.
+     "key" keeps each chapter's saved text attached even when chapter numbers shift. */
+  /* Problem → fix → result. The point is the thinking (seeing the problem, building a new
+     process), not the team size — so only the cost number is shown big. */
+  { key:"ch4", meta:"A new role", title:"They trusted me with the role. *I rewrote the playbook.*",
+    sub:"Day one: high costs, slow delivery, and projects we had to turn down.",
+    num2:{from:0, to:40, prefix:"~", suffix:"%", label:"lower project costs"},
+    text:"When I stepped in as project manager, the problem was clear: costs were high, delivery was slow, and we were turning projects away because we couldn't hit deadlines. Instead of running things the way they had always run, I fixed the system — I grew the team, built a bench of freelancers, and created a performance-based scoring process to match the right people to every project.<br><br><strong>The result: significantly more projects, around 40% lower costs, and a team built to scale.</strong>",
+    team:{
+      photos:[
+        {img:"assets/work/team-celebration.jpg", cap:"Celebrating together", pos:"center 60%"},
+        {img:"assets/work/team-group.jpg", cap:"The Harmony team", pos:"center 35%"},
+        {img:"assets/work/team-gift.jpg", cap:"A thank-you to the team", pos:"center 45%"}
+      ],
+      ba:{ before:{title:"Day one", items:["High costs","Slow delivery","Missed deadlines","Projects turned away"]},
+           after:{title:"After the new process", items:["~40% lower costs","Faster, on-time delivery","Significantly more projects","A team that scales"]} }
+    } },
+  { key:"ch6", meta:"Agency life", title:"Big brands. *Impossible deadlines.*",
     num:{from:0, to:12, suffix:"+", label:"concurrent projects delivered on time"},
     text:"Delivered multi-channel campaigns, websites, and games for 76+ top brands—keeping every moving piece aligned under intense pressure.",
     items:["zipad","bitpin","jojo","divar","alibaba","sunstar","domino","mypharma","sunnyness","jeanwest","renault","daewoo-snowa","snapp"], logos:true },
-  { meta:"Now", title:"AI changed the game. *So did I.*",
+  { key:"ch7", meta:"Now", title:"AI changed the game. *So did I.*",
     text:"Rebuilt delivery around lean AI workflows. Shipped full-scale brand sites and automated pipelines alongside a tech lead—zero designer overhead needed.",
     items:["harmony-ai","sunstar","bale","tg-flow","landing"] }
 ];
@@ -667,7 +764,7 @@ const get = k => Object.prototype.hasOwnProperty.call(O, k) ? O[k] : DEF[k];
 function clean(html){
   const t = document.createElement("template"); t.innerHTML = html;
   const walk = n => [...n.childNodes].map(c => {
-    if (c.nodeType === 3) return esc(c.textContent);
+    if (c.nodeType === 3) return esc(c.textContent).replace(/\r?\n/g, "<br>");   // Shift+Enter line breaks
     if (c.nodeType !== 1) return "";
     const tag = c.tagName.toLowerCase(), inner = walk(c);
     if (tag === "br") return "<br>";
@@ -716,7 +813,7 @@ function parseNum(s, from){
    ===================================================================== */
 const SCENES = [
   { key:"intro", intro:true, meta:"MY STORY", title:"From social media intern to building *a 40+ person team.*", text:"Five years, 70+ brands and a 43-person team — follow my journey." },
-  ...CHAPTERS.map((c, i) => ({...c, key:"ch" + (i + 1)})),
+  ...CHAPTERS.map((c, i) => ({...c, key:c.key || "ch" + (i + 1)})),
   { key:"end", end:true, meta:"Next chapter", title:"Writing the next chapter: *ready to build.*", text:"Looking for an ambitious team where I can take full ownership and ship bold things. Let’s create together." }
 ];
 const BTN = EDIT ? "div" : "button";   // contenteditable doesn't work well inside <button>
@@ -724,6 +821,15 @@ const BTN = EDIT ? "div" : "button";   // contenteditable doesn't work well insi
 function capKey(p){ return p.metric ? ["metric", p.metric] : p.label ? ["label", p.label] : ["tag." + p.tags[0], p.tags[0]]; }
 function pField(p, f, opts){ return F(`project.${p.id}.${f}`, p[f], opts); }
 function tagField(t){ return F("tag." + t, t); }
+
+/* Chapter 3: before / after — two tall browser windows, each page scrolls slowly inside its frame */
+function compareHTML(key, c){
+  const shot = (side, s) => `<${BTN} class="m-item m-shot ${side}" data-id="${esc(c.id)}"><span class="m-float">
+    ${F(`story.${key}.${side}Tag`, s.tag, {cls:"ba-tag"})}
+    <span class="browser tall"><span class="bar"><i></i><i></i><i></i><span class="url">${esc(c.url)}</span></span><span class="viewport"><img src="${esc(s.img)}" alt="Harmony website — ${esc(s.tag.toLowerCase())}" loading="lazy"></span></span>
+    <span class="cap">${F(`story.${key}.${side}Cap`, s.cap, {tag:"small"})}</span></span></${BTN}>`;
+  return `<div class="media compare fixed">${shot("before", c.before)}${shot("after", c.after)}</div>`;
+}
 
 /* Chapter 2 showcase: each kind of work in its own frame — phones, a browser window, video players */
 function showcaseHTML(key, sc){
@@ -761,11 +867,22 @@ function mediaHTML(it, logos){
   const capHTML = p.image ? cap : pField(p, "title", {tag:"b"}) + cap;
   return `<${BTN} class="m-item m-card${arch ? " arch" : ""}${p.image ? " has-img" : ""}" data-id="${p.id}"><span class="m-float"><span class="frame">${inner}</span><span class="cap">${capHTML}</span></span></${BTN}>`;
 }
-function numHTML(key, n){
+function numHTML(key, n, slot = "num"){
   const def = (n.prefix || "") + n.to + (n.suffix || "");
-  DEF[`story.${key}.num`] = def;
-  const d = parseNum(get(`story.${key}.num`), n.from);
-  return `<div class="big-num" data-from="${d.from}" data-to="${d.to}" data-prefix="${esc(d.prefix)}" data-suffix="${esc(d.suffix)}">${F(`story.${key}.num`, def, {kind:"num", cls:"num-val"})}${F(`story.${key}.numLabel`, n.label, {tag:"small"})}</div>`;
+  DEF[`story.${key}.${slot}`] = def;
+  const d = parseNum(get(`story.${key}.${slot}`), n.from);
+  return `<div class="big-num" data-from="${d.from}" data-to="${d.to}" data-prefix="${esc(d.prefix)}" data-suffix="${esc(d.suffix)}">${F(`story.${key}.${slot}`, def, {kind:"num", cls:"num-val"})}${F(`story.${key}.${slot}Label`, n.label, {tag:"small"})}</div>`;
+}
+
+/* Merged chapter 4: team photos + a small "team up, cost down" chart */
+function teamHTML(key, t){
+  const photos = t.photos.map((p, n) => `<div class="m-item m-photo"><span class="m-float"><span class="polaroid">${p.img
+      ? `<img src="${esc(p.img)}" alt="${esc(p.cap)}" loading="lazy"${p.pos ? ` style="object-position:${esc(p.pos)}"` : ""}>`
+      : `<span class="ph-photo"><i data-lucide="users" aria-hidden="true"></i>${F("ph.teamPhoto", "Photo coming")}</span>`}${F(`story.${key}.photo${n}`, p.cap, {cls:"pcap"})}</span></span></div>`).join("");
+  /* Day one (problems) → after the new process (results) */
+  const side = (s, cls, icon) => `<span class="ba-col ${cls}">${F(`story.${key}.${cls}Title`, s.title, {cls:"ba-title"})}<span class="ba-list">${s.items.map((it, n) => `<span class="ba-row"><i data-lucide="${icon}" aria-hidden="true"></i>${F(`story.${key}.${cls}${n}`, it)}</span>`).join("")}</span></span>`;
+  const ba = `<div class="m-item m-ba"><span class="m-float"><span class="ba-card">${side(t.ba.before, "was", "x")}<span class="ba-arrow" aria-hidden="true"><i data-lucide="arrow-right"></i></span>${side(t.ba.after, "now", "check")}</span></span></div>`;
+  return `<div class="media team fixed"><div class="team-photos">${photos}</div>${ba}</div>`;
 }
 function renderScenes(){
   $("#scenes").innerHTML = SCENES.map((s, i) => {
@@ -773,17 +890,22 @@ function renderScenes(){
     const pill = `<div class="pill"><b>${s.intro ? "02" : chap ? pad(i) : "08"}</b>${F(`story.${k}.label`, s.meta, {kind:"pill"})}</div>`;
     const extra = s.end ? `<div class="s-extra"><a class="btn btn-primary" href="#contact">${F("story.end.btn1", "Let's talk")}</a><a class="btn btn-ghost" href="#work">${F("story.end.btn2", "See all work")}</a></div>` : "";
     return `
-    <div class="scene${s.intro ? " intro" : ""}${s.end ? " end" : ""}${(s.phones || s.showcase) ? " layout-phones" : ""}${s.showcase ? " layout-showcase" : ""}" data-i="${i}" aria-label="${chap ? "Chapter " + pad(i) : esc(s.meta)}">
+    <div class="scene${s.intro ? " intro" : ""}${s.end ? " end" : ""}${(s.phones || s.showcase || s.compare || s.team) ? " layout-phones" : ""}${s.showcase ? " layout-showcase" : ""}${s.team ? " layout-team" : ""}" data-i="${i}" aria-label="${chap ? "Chapter " + pad(i) : esc(s.meta)}">
       ${chap ? `<div class="ghost" aria-hidden="true">${pad(i)}</div>` : ""}
       <div class="scene-center">
         ${pill}
         ${F(`story.${k}.title`, s.title, {tag:"h3", cls:"s-title", kind:"title"})}
-        ${s.num ? numHTML(k, s.num) : ""}
+        ${s.sub ? F(`story.${k}.sub`, s.sub, {tag:"p", cls:"s-sub"}) : ""}
+        ${s.num && s.num2 ? `<div class="nums">${numHTML(k, s.num)}${numHTML(k, s.num2, "num2")}</div>`
+          : s.num2 ? `<div class="nums">${numHTML(k, s.num2, "num2")}</div>`
+          : s.num ? numHTML(k, s.num) : ""}
         ${s.text ? F(`story.${k}.text`, s.text, {tag:"p", cls:"s-text", html:true}) : ""}
         ${s.showcase && s.showcase.note ? `<p class="s-note"><i data-lucide="users" aria-hidden="true"></i>${F(`story.${k}.note`, s.showcase.note)}</p>` : ""}
         ${extra}
       </div>
       ${s.showcase ? showcaseHTML(k, s.showcase) : ""}
+      ${s.compare ? compareHTML(k, s.compare) : ""}
+      ${s.team ? teamHTML(k, s.team) : ""}
       ${s.items ? (s.phones
         ? `<div class="media phones fixed">${s.items.map((id, n) => phoneHTML(id, n)).join("")}</div>`
         : `<div class="media${s.logos ? " logos" : ""}">${s.items.map(it => mediaHTML(it, s.logos)).join("")}</div>`) : ""}
@@ -879,19 +1001,23 @@ const fmtNum = (v, d) => d.prefix + Math.round(v) + d.suffix;
 function enterTl(sc){
   const t = gsap.timeline({defaults:{ease:"power3.out"}});
   const q = s => sc.querySelectorAll(s);
-  const ghost = sc.querySelector(".ghost"), num = sc.querySelector(".big-num");
+  const ghost = sc.querySelector(".ghost");
   if (ghost) t.fromTo(ghost, {autoAlpha:0, scale:.8}, {autoAlpha:1, scale:1, duration:1.2, ease:"power2.out"}, 0);
   t.fromTo(q(".pill"), {autoAlpha:0, y:20}, {autoAlpha:1, y:0, duration:.4}, 0);
   t.fromTo(q(".wi"), {yPercent:115}, {yPercent:0, duration:.6, stagger:.045}, .12);
-  if (num){
+  if (q(".s-sub").length) t.fromTo(q(".s-sub"), {autoAlpha:0, y:14}, {autoAlpha:1, y:0, duration:.4}, ">-.15");
+  /* Big numbers slam in one after another and count up */
+  q(".big-num").forEach((num, n) => {
     const val = num.querySelector(".num-val"), o = {v:+num.dataset.from};
-    t.fromTo(num, {autoAlpha:0, scale:2.4, filter:"blur(16px)"}, {autoAlpha:1, scale:1, filter:"blur(0px)", duration:.55, ease:"power4.out"}, ">-.05");
+    t.fromTo(num, {autoAlpha:0, scale:2.4, filter:"blur(16px)"}, {autoAlpha:1, scale:1, filter:"blur(0px)", duration:.55, ease:"power4.out"}, n ? ">-.25" : ">-.05");
     t.fromTo(o, {v:+num.dataset.from}, {v:+num.dataset.to, duration:.7, ease:"power2.out", onUpdate:() => val.textContent = fmtNum(o.v, num.dataset)}, "<");
-  }
+  });
   t.fromTo(q(".s-text"), {autoAlpha:0, y:24}, {autoAlpha:1, y:0, duration:.45}, ">-.2");
   if (q(".s-extra").length) t.fromTo(q(".s-extra"), {autoAlpha:0, y:16}, {autoAlpha:1, y:0, duration:.4}, ">-.1");
   const items = q(".m-item");
   if (items.length) t.fromTo(items, {autoAlpha:0, y:90, scale:.75}, {autoAlpha:1, y:0, scale:1, duration:.7, ease:"back.out(1.5)", stagger:Math.min(.09, .7/items.length)}, ">-.15");
+  /* Day one / After rows tick in one by one */
+  if (q(".ba-row").length) t.fromTo(q(".ba-row"), {autoAlpha:0, x:-10}, {autoAlpha:1, x:0, duration:.3, stagger:.06}, ">-.35");
   return t;
 }
 
@@ -1072,8 +1198,32 @@ function startEditMode(){
     const v = RAW.has(el.dataset.kind) ? el.textContent.replace(/\s+/g, " ").trim() : clean(el.innerHTML);
     if (v !== get(k)) commit(k, v); else paint(el, v);
   });
+  /* Ctrl+B (or Cmd+B): make the selected words bold — or not bold again */
+  function toggleBold(el){
+    const sel = getSelection();
+    if (!sel.rangeCount || sel.isCollapsed) return;
+    const range = sel.getRangeAt(0);
+    if (!el.contains(range.commonAncestorContainer)) return;
+    const node = range.commonAncestorContainer.nodeType === 3 ? range.commonAncestorContainer.parentNode : range.commonAncestorContainer;
+    const strong = node.closest("strong");
+    if (strong && el.contains(strong)){
+      strong.replaceWith(...strong.childNodes);          // already bold → remove bold
+    } else {
+      const s = document.createElement("strong");
+      s.appendChild(range.extractContents());
+      s.querySelectorAll("strong").forEach(i => i.replaceWith(...i.childNodes));
+      range.insertNode(s);
+      sel.removeAllRanges(); const r = document.createRange(); r.selectNodeContents(s); sel.addRange(r);
+    }
+    el.normalize();
+  }
   document.addEventListener("keydown", e => {
     const el = e.target.closest?.("[data-t]"); if (!el) return;
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "b"){
+      e.preventDefault();
+      if (!RAW.has(el.dataset.kind)) toggleBold(el);   // titles use *stars* for green instead
+      return;
+    }
     if (e.key === "Enter" && !e.shiftKey){ e.preventDefault(); el.blur(); }
     if (e.key === "Escape"){ e.preventDefault(); cancelEdit = true; el.blur(); }
   });
